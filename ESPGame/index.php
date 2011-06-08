@@ -10,7 +10,7 @@ $contents = file_get_contents($url . $params);
 $xml = new SimpleXMLElement($contents); // 解析XML文件
 foreach ($xml->photos->photo as $value) {
     $src = 'http://farm' . $value['farm'] . ".static.flickr.com/" .
-    $value['server'] . '/' . $value['id'] . '_' . $value['secret'] . '_s.jpg'; // _s用来控制显示图片的大小
+    $value['server'] . '/' . $value['id'] . '_' . $value['secret'] . '_s.jpg'; // _s用来控制显示图片的大小 reference:http://www.flickr.com/services/api/misc.urls.html
     echo "<img src=\"$src\" />";
 }
 ?>
