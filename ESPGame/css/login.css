@@ -1,0 +1,8 @@
+.block{
+	display: block;
+}
+
+.field{
+	display:inline-block;
+	width:100px;
+}
