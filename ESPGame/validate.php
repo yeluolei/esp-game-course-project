@@ -11,7 +11,6 @@
 			$username = $_POST['userid'];
 		    $password = $_POST['passwd'];
 		    if($username == "" || $password == ""){
-		     //echo "<script>location.href='login.php'</script>";
 		     header("Location:login.php");
 		    }
 		    $query = "select * from player";
@@ -21,8 +20,6 @@
 		    	if($rs->userid == $username){
 		      		if($rs->passwd == $password){
 		       			$_SESSION['USERNAME'] = $username;
-		       			setcookie('userid',$username);
-		       			//echo "<script>location.href='success.php'</script>";
 		       			header("Location:success.php");
 		      		}
 		      		else{

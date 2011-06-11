@@ -8,19 +8,19 @@
 			$username = $_POST['userid'];
 		    $password = $_POST['passwd'];
 		    if($username == "" || $password == ""){
-		     echo "<script>location.href='register.php'</script>";
+		    	header("Location:register.php");
 		    }
-		    $query = "insert into player values('$username','$password','1');";
+		    $query = "insert into player values('$username','$password','1',DEFAULT);";
 		    echo $query."\n";
 		    mysql_select_db("esp");
 		    $result = mysql_query($query);
 		    if (!$result)
 		    {
-		    	echo "<script>location.href='register.php'</script>";
+		    	header("Location:register.php");
 		    }
 		    else 
 		    {
 		    	$_SESSION['USERNAME'] = $username;
-		    	echo "<script>location.href='success.php'</script>";
+		    	header("Location:success.php");
 		    }
 ?>
