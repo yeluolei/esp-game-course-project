@@ -4,14 +4,6 @@
 		<link href="css/index.css" type="text/css" rel="stylesheet"/>
 		<script type="text/javascript" src="js/jquery.js"></script>
 		<script type="text/javascript" src="js/image.js"></script>
-		<script type="text/javascript">
-		$(function(){
-			$('#pass').click(function() {
-			  alert('Handler for .click() called.');
-			  $('#gameimg').src('image/ruler.png');
-			});
-		});
-		</script>
 	</head>
 	<body>
 		<div id ="content">

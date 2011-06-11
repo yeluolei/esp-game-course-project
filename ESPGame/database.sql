@@ -6,7 +6,9 @@ create table player(
 userid varchar(15) not null,
 passwd varchar(20) not null,
 status smallint default 0,
-primary key (userid)
+partid varchar(15) default null,
+primary key (userid),
+foreign key (partid) references player(userid)
 ) engine=innodb charset=utf8;
 
 create table pic(
@@ -15,21 +17,26 @@ url varchar(100) not null,
 primary key(picid)
 )engine=innodb charset=utf8;
 
-create table game(
+create table gamepair(
 id int not null AUTO_INCREMENT,
-picid int not null,
 player1 varchar(15) not null,
 player2 varchar(15) not null,
 primary key(id),
-foreign key(picid) references pic(picid),
 foreign key(player1) references player(userid),
 foreign key(player2) references player(userid)
 )engine=innodb charset=utf8;
 
+create table game(
+id int not null,
+picid int not null,
+foreign key(id) references gamepair(id),
+foreign key(picid) references pic(picid)
+)
+
 create table labelforgame(
 id int not null,
 player varchar(15) not null,
-foreign key(id) references game(id),
+foreign key(id) references gamepair(id),
 foreign key(player) references player(userid)
 )engine=innodb charset=utf8;
 
@@ -39,4 +46,12 @@ content varchar(30) not null,
 times int not null default 0,
 foreign key(picid) references pic(picid)
 )engine=innodb charset=utf8;
+
+insert into player values('test','123456',DEFAULT,DEFAULT);
+insert into player values('test1','123456',DEFAULT,DEFAULT);
+insert into player values('test2','123456','2','test');
+
+// clear data
+update player set status = '0' , partid = DEFAULT;
+
 
