@@ -51,7 +51,7 @@ insert into player values('test','123456',DEFAULT,DEFAULT);
 insert into player values('test1','123456',DEFAULT,DEFAULT);
 insert into player values('test2','123456','2','test');
 
-// clear data
+/*clear data*/
 update player set status = '0' , partid = DEFAULT;
 
 
