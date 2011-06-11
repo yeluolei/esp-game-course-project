@@ -8,19 +8,18 @@
 			$username = $_POST['userid'];
 		    $password = $_POST['passwd'];
 		    if($username == "" || $password == ""){
-		    	header("Location:register.php");
+		    	echo json_encode(array('succ'=>false,'msg'=>"User name and passwowd can't be empty!"));
 		    }
-		    $query = "insert into player values('$username','$password','1',DEFAULT);";
-		    echo $query."\n";
+		    $query = "insert into player values('$username','$password',DEFAULT,DEFAULT);";
 		    mysql_select_db("esp");
 		    $result = mysql_query($query);
 		    if (!$result)
 		    {
-		    	header("Location:register.php");
+		    	echo json_encode(array('succ'=>false,'msg'=>"User name is already exist!"));
 		    }
 		    else 
 		    {
 		    	$_SESSION['USERNAME'] = $username;
-		    	header("Location:success.php");
+		    	echo json_encode(array('succ'=>true,'userid'=>$username));
 		    }
 ?>

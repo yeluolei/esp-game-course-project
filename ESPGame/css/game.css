@@ -1,0 +1,119 @@
+body {
+	background: url("../image/background-tile.jpg") repeat transparent;
+}
+#content
+{
+	width:1000px;
+	margin-left:auto;
+	margin-right:auto;
+	border-left: dotted gray;
+    border-right: dotted gray;
+}
+#header {
+    height: 120px;
+	width: 660px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+#title {
+    font-family: candara;
+    font-size: 60px;
+    font-weight: bold;
+    clear: both;
+}
+#title #left
+{
+   color: white;
+}
+
+#title #right
+{
+	color: white;
+}
+
+#title center {
+    width: 60px;
+	height: 75px;
+    float: left;
+}
+
+#gameimg{
+	max-width: 500px;
+	max-height: 600px;
+	text-align: center;
+}
+
+#main {
+}
+#gameleft {
+    width: 150px;
+	float: left;
+}
+#gamecenter{
+	text-align:center;
+	width: 700px;
+	float: left;
+}
+
+#gameright{
+	width: 150px;
+	float: left;
+	}
+#main h1 {
+    font-size: 22px;
+    font-family: verdana;
+    border-bottom: dotted 1px;
+    color: #266646;
+}
+.button{
+	background:#266646; 
+	width:80px;
+	height:30px;
+	color:white; 
+	font-weight:bold; 
+	-webkit-box-shadow: inset 0px 0px 1px #266646; 
+	-moz-box-shadow:inset 0px 0px 1px #266646;
+	-moz-border-radius: 5px; 
+	-webkit-border-radius: 5px; 
+	border-color: #266646;
+	text-align:center; 
+	text-shadow:0 0 1px white;
+}
+#labelbox{
+	height:30px;
+	-webkit-box-shadow: inset 0px 0px 1px #266646; 
+	-moz-box-shadow:inset 0px 0px 1px #266646;
+	-moz-border-radius: 5px; 
+	-webkit-border-radius: 5px; 
+}
+
+#labelbox{
+	width: 300px;
+}
+#footer {
+    height: 30px;
+}
+
+.dg {
+    background-color: #225A39;
+}
+.lg {
+    background-color: #5C9446;
+}
+.lb {
+    background-color: #64CDA1;
+}
+.lr {
+    background-color: #5AB9BF;
+}
+.ly {
+    background-color: #99CC99;
+}
+.lp {
+    background-color: #666600;
+}
+.lo
+{
+	background-color: #9A9DA2;
+}
