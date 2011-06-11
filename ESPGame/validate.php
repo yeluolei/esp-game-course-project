@@ -1,7 +1,8 @@
 <html>
 	<body>
 		<?php
-			$conn = mysql_connect("127.0.0.1","root","1"); 
+			include_once 'common/common.php';
+			$conn = mysql_connect($cfg_dbhost,$cfg_dbuser,$cfg_dbpwd); 
 			if (!$conn)
 			{
 				die("Connecttion to data failed:".mysql_error());
@@ -10,7 +11,8 @@
 			$username = $_POST['userid'];
 		    $password = $_POST['passwd'];
 		    if($username == "" || $password == ""){
-		     echo "<script>location.href='login.php'</script>";
+		     //echo "<script>location.href='login.php'</script>";
+		     header("Location:login.php");
 		    }
 		    $query = "select * from player";
 		    mysql_select_db("esp");
@@ -19,7 +21,8 @@
 		    	if($rs->userid == $username){
 		      		if($rs->passwd == $password){
 		       			$_SESSION['USERNAME'] = $username;
-		       			echo "<script>location.href='success.php'</script>";
+		       			//echo "<script>location.href='success.php'</script>";
+		       			header("Location:success.php");
 		      		}
 		      		else{
 		      			break;
