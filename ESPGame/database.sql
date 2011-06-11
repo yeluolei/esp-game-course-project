@@ -34,11 +34,12 @@ foreign key(picid) references pic(picid)
 )engine=innodb charset=utf8;
 
 create table labelforgame(
-id int not null,
+labelid varchar(30) not null,
 player varchar(15) not null,
-content varchar(30) not null,
-foreign key(id) references game(id),
-foreign key(player) references player(userid)
+picid int not null,
+primary key(labelid,player,picid),
+foreign key(player) references player(userid),
+foreign key(picid) references pic(picid)
 )engine=innodb charset=utf8;
 
 create table label(
