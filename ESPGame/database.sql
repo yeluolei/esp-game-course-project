@@ -47,11 +47,11 @@ times int not null default 0,
 foreign key(picid) references pic(picid)
 )engine=innodb charset=utf8;
 
-insert into player values('test','123456',DEFAULT,DEFAULT);
-insert into player values('test1','123456',DEFAULT,DEFAULT);
-insert into player values('test2','123456','2','test');
 
+<<<<<<< .mine
+=======
 /*clear data*/
 update player set status = '0' , partid = DEFAULT;
 
 
+>>>>>>> .r12
