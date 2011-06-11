@@ -8,4 +8,8 @@ function() {
 		}, "json");
 	});
 	
+	$('#begingame').click(function(){
+		$('#begingame').attr("disabled","disabled");
+		
+	});
 });

@@ -1,11 +1,13 @@
 <html>
 	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 		<title>index</title>
 		<link href="css/index.css" type="text/css" rel="stylesheet"/>
 		<script type="text/javascript" src="js/jquery.js"></script>
 		<script type="text/javascript" src="js/image.js"></script>
 	</head>
 	<body>
+	<button id="begingame" >开始游戏</button>
 		<div id ="content">
 			<?php include 'header.php';?>
 			<div id="main">
