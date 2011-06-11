@@ -21,6 +21,7 @@
 		    	if($rs->userid == $username){
 		      		if($rs->passwd == $password){
 		       			$_SESSION['USERNAME'] = $username;
+		       			setcookie('userid',$username);
 		       			//echo "<script>location.href='success.php'</script>";
 		       			header("Location:success.php");
 		      		}
