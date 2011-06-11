@@ -36,7 +36,8 @@ foreign key(picid) references pic(picid)
 create table labelforgame(
 id int not null,
 player varchar(15) not null,
-foreign key(id) references gamepair(id),
+content varchar(30) not null,
+foreign key(id) references game(id),
 foreign key(player) references player(userid)
 )engine=innodb charset=utf8;
 
@@ -46,12 +47,3 @@ content varchar(30) not null,
 times int not null default 0,
 foreign key(picid) references pic(picid)
 )engine=innodb charset=utf8;
-
-
-<<<<<<< .mine
-=======
-/*clear data*/
-update player set status = '0' , partid = DEFAULT;
-
-
->>>>>>> .r12
