@@ -31,7 +31,7 @@ id int not null,
 picid int not null,
 foreign key(id) references gamepair(id),
 foreign key(picid) references pic(picid)
-)
+)engine=innodb charset=utf8;
 
 create table labelforgame(
 id int not null,
