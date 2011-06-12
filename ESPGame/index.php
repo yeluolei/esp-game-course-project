@@ -38,9 +38,9 @@
 						foreach ( getToppairs() as $line ) {
 							?>
 							<tr>
-								<td><?= $line->player1?></td>
-								<td><?= $line->player2?></td>
-								<td><?= $line->sum ?></td>
+								<td><?= $line['player1']?></td>
+								<td><?= $line['player2']?></td>
+								<td><?= $line['sum'] ?></td>
 							</tr>
 						<?php } ?>
 					</table>

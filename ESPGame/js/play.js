@@ -11,17 +11,22 @@ function bindgaming(){
 			$('#gameimg').attr({
 				src : data.url
 			});
+			clearlimit();
+			for( var limit in data.limits){
+				addlimit(data.limits[limit]);
+			}
 		}, "json");
+
 		passes();
 	});
 	$('#label').click(function(){
 		test();
-		label($('#labelbox').val());
-		$('#labelbox').val('');
+		
 	});
-    $('#counter_2').html().countdown({
+    $('#counter_2').html();
+    $('#counter_2').countdown({
         image: 'image/digits.png',
-        startTime: '01:00',
+        startTime: '00:10',
         timerEnd: function(){ 
         	finish();
         },
@@ -32,8 +37,15 @@ function bindgaming(){
 function finish(){
 	alert("finish");
 	clearTimeout(checkf);
-	$.post("leave.php",function(){
+	$.post("leave.php",function(data){
+//		for(var item in data){
+//				var dataitem=data[item];
+//				alert(dataitem.labelid);
+//		}
 		$('#gamecenter').html(
+				'<center>'+
+					data+
+				'</center>'+
 				'<input id="restart" class="button" type="button" value="restart" /> '+
 				'<div>'+
 				'<p>waiting for connectting ..</p>'+
@@ -54,15 +66,25 @@ function test(){
 	var id = 1;
 	$.get('match.php',{label:item, picid:id},function(data){
 		if (data.matched == "false"){
-			
+			label($('#labelbox').val());
 			}
+		else if(data.matched == "limited"){
+			notify(data.label + " is limited");
+		}
 		else{
+			label($('#labelbox').val());
 			alert("matched");
 			$('#gameimg').attr({
 				src : data.url
 			});
+			clearlimit();
+			for( var limit in data.limits){
+				addlimit(data.limits[limit]);
+			}
+			
 			score();
 		}
+		$('#labelbox').val('');
 	},"json");
 };
 
@@ -114,6 +136,23 @@ function check() {
 				$('#gameimg').attr({
 					src : data.url
 				});
+				clearlimit();
+				for( var limit in data.limits){
+					addlimit(data.limits[limit]);
+				}
+				passes();
+			}
+			if(data.parterstatus == 6){
+				notify('matched!');
+				$('#gameimg').attr({
+					src : data.url
+				});
+				clearlimit();
+				for( var limit in data.limits){
+					addlimit(data.limits[limit]);
+				}
+				alert("m");
+				score();
 			}
 			checkf = setTimeout("check()", 1000);
 		}
@@ -126,7 +165,7 @@ function label(str){
 }
 
 function score(){
-	var value=new Number($('#passnum').html());
+	var value=new Number($('#scorenum').html());
 	value = value + 1;
 	$('#scorenum').html(value);
 	$('#labelstr').html('');
@@ -137,6 +176,7 @@ function passes(){
 	value = value + 1;
 	$('#passnum').html(value);
 	$('#labelstr').html('');
+	$('#labelbox').val('');
 }
 
 function notify(str){
@@ -144,4 +184,11 @@ function notify(str){
 	setTimeout(function(){
 		$('#notify').slideUp('slow');
 	},3000);
+}
+
+function addlimit(str){
+	$('#limitstr').append("<p>"+ str +"</p>");
+}
+function clearlimit(){
+	$('#limitstr').html('');
 }

@@ -1,12 +1,21 @@
 <?php
 	include_once 'common/common.php';
+	include_once 'getdata.php';
 	session_start();
 	$succ = FALSE;
 	$labelid = $_GET['label'];
 	$userid = $_SESSION['USERNAME'];
 	$picid = $_SESSION['picid'];
+	$pairid = $_SESSION['pairid'];
+	$gameid = $_SESSION['gameid'];
 	
-	
+	$limits = getOfflimits($picid);
+	foreach ($limits as $limit){
+		if($limit == $labelid){
+			echo json_encode(array('matched'=>'limited','label'=>$limit));
+			exit();
+		}
+	}
 	$conn = mysql_connect($cfg_dbhost,$cfg_dbuser,$cfg_dbpwd);
 	if (!$conn)
 	{
@@ -14,7 +23,7 @@
 	}
 	mysql_select_db('esp');
 	
-	$addlabel = "insert into labelforgame values('$labelid','$userid','$picid');";
+	$addlabel = "insert into labelforgame values('$labelid','$userid','$picid','$pairid','$gameid');";
 	$executeadd = mysql_query($addlabel);
 	$partner = "SELECT * from player where userid = (select partid from player where userid = '$userid');";
 	$executep = mysql_query($partner);
@@ -22,7 +31,7 @@
 		while($row = mysql_fetch_object($executep)){
 			if($row -> status == 2){
 				$getlabels = "SELECT * from labelforgame where player = '$row->userid'
-				 and labelid = '$labelid' and picid = '$picid';";
+				 and labelid = '$labelid' and picid = '$picid' and gameid='$gameid';";
 				$executelabels = mysql_query($getlabels);
 				if(mysql_num_rows($executelabels) <> 0){
 					$succ = TRUE;
@@ -59,10 +68,11 @@
 			$db->query($updatesql);
 		}
 		$num_result = $result->num_rows;
-		$updates="UPDATE player SET status = '5' where userid='$_SESSION[partnerid]';";
+		$updates="UPDATE player SET status = '6' where userid='$_SESSION[partnerid]';";
 		$_SESSION['picid'] = $picarry["picid"];
 		$db->query($updates);
-		echo json_encode(array('matched'=>'true',"url"=> $picarry["url"],"picid"=>$picarry["picid"],"gameid"=>$gameid));
+
+		echo json_encode(array('matched'=>'true','limits'=>$limits,"url"=> $picarry["url"],"picid"=>$picarry["picid"],"gameid"=>$gameid));
 	}
 	else{
 		echo json_encode(array('matched'=>'false'));

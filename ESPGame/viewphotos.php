@@ -28,11 +28,9 @@ function getLabels($pid){
 function getUrl($pid){
 	$geturl = "select url from pic where picid = '$pid';";
 	$result = mysql_query($geturl);
-	$list = array();
 	if ($row = mysql_fetch_object($result)){
-		$list[] = $row->url;
+		return $row->url;
 	}
-	return $list;
 }
 ?>
 <html>
@@ -52,7 +50,7 @@ function getUrl($pid){
 				?>
 					<div class="photo">
 						<p class="name">
-							<img src="<?= $url ?>" alt="<?= $line ?>" />
+							<img src="<?= $url ?>" alt="<?= $url ?>" />
 						</p>
 						<p class="info">
 						<?php 

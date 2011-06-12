@@ -1,6 +1,7 @@
 <?php
 session_start();
 include_once 'common/common.php';
+include_once 'getdata.php';
 $pairid=$_SESSION['pairid'];
 
 $db = new mysqli($cfg_dbhost,$cfg_dbuser,$cfg_dbpwd,$cfg_dbname);
@@ -22,6 +23,7 @@ $db->query($updatepair);
 $updates="UPDATE player SET status = '5' where userid='$_SESSION[partnerid]';";
 $db->query($updates);
 $_SESSION['picid'] = $picarry["picid"];
-echo json_encode(array("url"=> $picarry["url"],"picid"=>$picarry["picid"],"gameid"=>$gameid));
+$limits = getOfflimits($picarry["picid"]);
+echo json_encode(array("url"=> $picarry["url"],"picid"=>$picarry["picid"],"gameid"=>$gameid,'limits'=>$limits));
 
 ?>

@@ -41,8 +41,12 @@ create table labelforgame(
 labelid varchar(30) not null,
 player varchar(15) not null,
 picid int not null,
+pairid int not null,
+gameid int not null,
 primary key(labelid,player,picid),
 foreign key(player) references player(userid),
+foreign key(pairid) references gamepair(id),
+foreign key(gameid) references game(id),
 foreign key(picid) references pic(picid)
 )engine=innodb charset=utf8;
 

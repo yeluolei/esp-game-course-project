@@ -1,5 +1,6 @@
 <?php
 include_once 'common/common.php';
+include_once 'getdata.php';
 session_start();
 $conn = mysql_connect($cfg_dbhost,$cfg_dbuser,$cfg_dbpwd);
 if (!$conn)
@@ -41,7 +42,8 @@ if ($s = mysql_fetch_object($r))
 			$_SESSION["partnerid"] = $s->partid;
 			$_SESSION['picid'] = $picid->picid;
 			$_SESSION['gameid'] = $picid->gameid;
-			echo json_encode(array('partername'=>$s->partid , 'status'=>'success',"url"=>$picid->url));
+			$limits = getOfflimits($s->partid);
+			echo json_encode(array('partername'=>$s->partid ,'limits'=>$limits, 'status'=>'success',"url"=>$picid->url));
 		//}
 	}
 }
@@ -95,8 +97,8 @@ if (!$succ){
 		$_SESSION['gameid'] = $gameid;
 		$updatepair="UPDATE gamepair SET currentgame = '$gameid' where id='$id2';";
 		mysql_query($updatepair);
-		
-		echo json_encode(array('partername'=>$ob->userid , 'status'=>'success',"url"=>$picarry['url']));
+		$limits = getOfflimits($picarry["picid"]);
+		echo json_encode(array('partername'=>$ob->userid ,'limits'=>$limits, 'status'=>'success',"url"=>$picarry['url']));
 	}
 }
 if (!$succ) {

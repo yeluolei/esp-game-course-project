@@ -8,25 +8,30 @@ if (!$conn)
 mysql_select_db('esp');
 
 function getToppairs(){
-	$getpair = "SELECT gamepair.player1, gamepair.player2, SUM(game.status) as sum from game inner join gamepair on game.pairid = gamepair.id group by game.pairid order by SUM(game.status) desc;";
+	$getpair = "SELECT gamepair.player1 as player1, gamepair.player2 as player2, SUM(game.status) as sum from game inner join gamepair on game.pairid = gamepair.id group by game.pairid order by SUM(game.status) desc;";
 	$result = mysql_query($getpair);
 	$index = 0;
 	$list = array();
-	while ($row = mysql_fetch_object($result) && $index<4){
-		$list[] = $row;
-		$index++;
+	//$temparray = mysql_fetch_array($result);
+	while ($array = mysql_fetch_array($result)){
+		//echo 'www';
+		if($index >= 10){
+			break;
+		}
+		//print_r($array);
+		$list[$index] = $array;
+		$index = $index + 1;
 	}
-	print_r($list);
 	return $list;
 };
 function getOfflimits($pid){
-	$getlimits = "SELECT content from label where picid = '$pid' and times > 3;";
+	$getlimits = "SELECT content from label where picid = '$pid' and times > 1;";
 	$result = mysql_query($getlimits);
 	$list = array();
 	while ($row = mysql_fetch_object($result)){
 		$list[] = $row->content;
 	}
-	print_r($list);
+	//print_r($list);
 	return $list;
 };
 ?>
