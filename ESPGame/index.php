@@ -30,12 +30,18 @@
 				<div id ="toppair">
 					<table>
 						<tr>
-							<td>1</td>
-							<td>2</td>
-							<td>3</td>
-							<td>4</td>
-							<td>5</td>
+							<td>player</td>
+							<td>score</td>
 						</tr>
+						<?php
+						include 'getData.php';
+						foreach ( getToppairs() as $line ) {
+							$temp = preg_split("/_/", $line); ?>
+							<tr>
+								<td><?= $temp[0] ?></td>
+								<td><?= $temp[1] ?></td>
+							</tr>
+						<?php } ?>
 					</table>
 				</div>
 			</div>
