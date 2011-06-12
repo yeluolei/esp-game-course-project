@@ -10,6 +10,11 @@
 	
 	$ret = array();
 	$self= get_self();
+	/*
+	 * 4----窗口关闭
+	 * 2----正在游戏
+	 * 1----等待链接
+	 */
 	if ($self->status=='4')
 	{
 		$updateStopGame="update player set status='1',partid=DEFAULT where userid='$_SESSION[USERNAME]';";

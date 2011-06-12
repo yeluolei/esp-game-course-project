@@ -3,7 +3,7 @@
 		<title>index</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 		<link href="css/index.css" type="text/css" rel="stylesheet"/>
-		<link href="css/game.css" type="text/css" rel="stylesheet"/>
+		<link href="css/play.css" type="text/css" rel="stylesheet"/>
 		<script type="text/javascript" src="js/jquery.js"></script>
 		<script type="text/javascript" src="js/index.js"></script>
 	</head>

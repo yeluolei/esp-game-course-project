@@ -69,10 +69,21 @@
 		function bindstart(){
 			$('#startgame').click(
 					function(){
-						 window.location.href='success.php';
+						 connect();
 					}
 			);
 		}
+		
+		function connect(){
+			$.get('connection.php',function(data){
+					if (data.status == "fail"){
+						setTimeout("connect()", 1000);
+						}
+					else{
+						window.location.href="play.php";
+					}
+				},"json");
+		};
 			
 		var registstr="<label class='t'>Register</label>"+
 				"<div class='block'>"+

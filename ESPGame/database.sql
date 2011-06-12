@@ -7,6 +7,7 @@ userid varchar(15) not null,
 passwd varchar(20) not null,
 status smallint default 0,
 partid varchar(15) default null,
+pairid int default 0,
 primary key (userid),
 foreign key (partid) references player(userid)
 ) engine=innodb charset=utf8;
@@ -27,9 +28,11 @@ foreign key(player2) references player(userid)
 )engine=innodb charset=utf8;
 
 create table game(
-id int not null,
+id int not null AUTO_INCREMENT primary key,
+pairid int not null,
 picid int not null,
-foreign key(id) references gamepair(id),
+status int not null default 0,
+foreign key(pairid) references gamepair(id),
 foreign key(picid) references pic(picid)
 )engine=innodb charset=utf8;
 

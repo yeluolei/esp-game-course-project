@@ -6,7 +6,7 @@
 		function init()
 		{
 			close();
-			connect();
+			check();
 		};
 		
 		function connect(){

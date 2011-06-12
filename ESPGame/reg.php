@@ -10,7 +10,7 @@
 		    if($username == "" || $password == ""){
 		    	echo json_encode(array('succ'=>false,'msg'=>"User name and passwowd can't be empty!"));
 		    }
-		    $query = "insert into player values('$username','$password',DEFAULT,DEFAULT);";
+		    $query = "insert into player values('$username','$password',DEFAULT,DEFAULT,DEFAULT);";
 		    mysql_select_db("esp");
 		    $result = mysql_query($query);
 		    if (!$result)

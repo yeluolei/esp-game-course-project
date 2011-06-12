@@ -47,8 +47,9 @@ body {
 #main {
 }
 #gameleft {
-    width: 150px;
+    width: 250px;
 	float: left;
+	font-family: Arial;
 }
 #gamecenter{
 	text-align:center;

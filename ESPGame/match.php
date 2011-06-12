@@ -3,7 +3,7 @@
 	session_start();
 	$succ = FALSE;
 	$labelid = $_GET['label'];
-	$userid = $_SESSION[userid];
+	$userid = $_SESSION['USERNAME'];
 	$picid = $_GET['picid'];
 	
 	
