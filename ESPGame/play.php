@@ -31,6 +31,9 @@
 						alert("not matched");
 						}
 					else{
+						$('#gameimg').attr({
+							src : data.url
+						});
 						alert("matched");
 					}
 				},"json");
