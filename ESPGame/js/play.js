@@ -19,7 +19,7 @@ function bindgaming(){
 		label($('#labelbox').val());
 		$('#labelbox').val('');
 	});
-    $('#counter_2').countdown({
+    $('#counter_2').html().countdown({
         image: 'image/digits.png',
         startTime: '00:10',
         timerEnd: function(){ 

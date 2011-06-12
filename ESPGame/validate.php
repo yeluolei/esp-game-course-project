@@ -11,24 +11,26 @@
 	    if($username == "" || $password == ""){
 	     	echo json_encode(array('succ'=>false,'msg'=>"User name and passwowd can't be empty!"));
 	    }
-	    $query = "select * from player";
-	    mysql_select_db("esp");
-	    $result=mysql_query($query);
-	    $succful = FALSE;
-	    while($rs = mysql_fetch_object($result)){
-	    	if($rs->userid == $username){
-	      		if($rs->passwd == $password){
-	      			$succful = TRUE;
-	       			$_SESSION['USERNAME'] = $username;
-	       			echo json_encode(array('succ'=>true , 'userid'=>$username));
-	      		}
-	      		else{
-	      			echo json_encode(array('succ'=>false, 'msg'=>"Password Error"));
-	      		}
-	    	}
-	    }
-	    if (!$succful)
-	    {
-	    	echo json_encode(array('succ'=>false, 'msg'=>"User Name not exit"));
+	    else {
+		    $query = "select * from player";
+		    mysql_select_db("esp");
+		    $result=mysql_query($query);
+		    $succful = FALSE;
+		    while($rs = mysql_fetch_object($result)){
+		    	if($rs->userid == $username){
+		      		if($rs->passwd == $password){
+		      			$succful = TRUE;
+		       			$_SESSION['USERNAME'] = $username;
+		       			echo json_encode(array('succ'=>true , 'userid'=>$username));
+		      		}
+		      		else{
+		      			echo json_encode(array('succ'=>false, 'msg'=>"Password Error"));
+		      		}
+		    	}
+		    }
+		    if (!$succful)
+		    {
+		    	echo json_encode(array('succ'=>false, 'msg'=>"User Name not exit"));
+		    }
 	    }
 ?>

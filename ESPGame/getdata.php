@@ -13,7 +13,7 @@ function getToppairs(){
 	$index = 0;
 	$list = array();
 	while ($row = mysql_fetch_object($result) && $index<4){
-		$list[] = $row->player1."-".$row->player2."_".$row->sum;
+		$list[] = $row;
 		$index++;
 	}
 	print_r($list);

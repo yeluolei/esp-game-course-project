@@ -6,18 +6,22 @@
 		<link href="css/play.css" type="text/css" rel="stylesheet"/>
 		<script type="text/javascript" src="js/jquery.js"></script>
 		<script type="text/javascript">
-			function click(){
-					$.post("validateadmin.php",
-							{userid:$('#userid').val(),passwd:$('#passwd').val()},
-							function(data){
-								if (data.succ==true)
-								{
-									window.location.href="viewphotos.php";
-								}else{
-									$('#noti').html(data.msg);
-								}
-							},"json");
-			};
+			$(function(){
+					$('#login').click(
+							function(){
+								$.post("validateadmin.php",
+									{userid:$('#userid').attr('value'),passwd:$('#passwd').attr('value')},
+									function(data){
+										if (data.succ==true)
+										{
+											window.location.href="viewphotos.php";
+										}else{
+											$('#noti').html(data.msg);
+										}
+									},"json");
+							}
+					);
+			});
 		</script>
 	</head>
 	<body>
@@ -36,7 +40,7 @@
 						</div>
 						<p id="noti"></p>
 						<div class="buttonarea">
-							<input id="login" class="button" type="button" value="Login" onclick="click()"/>
+							<input id="login" class="button" type="button" value="Login""/>
 						</div>
 				</center>
 			</div>

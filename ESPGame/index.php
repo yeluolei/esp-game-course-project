@@ -36,10 +36,11 @@
 						<?php
 						include 'getdata.php';
 						foreach ( getToppairs() as $line ) {
-							$temp = preg_split("/_/", $line); ?>
+							?>
 							<tr>
-								<td><?= $temp[0] ?></td>
-								<td><?= $temp[1] ?></td>
+								<td><?= $line->player1?></td>
+								<td><?= $line->player2?></td>
+								<td><?= $line->sum ?></td>
 							</tr>
 						<?php } ?>
 					</table>
