@@ -1,44 +1,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>index</title>
+<title>Play</title>
 <link href="css/play.css" type="text/css" rel="stylesheet" />
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/image.js"></script>
 <script type="text/javascript" src="js/play.js"></script>
 <script src="js/countdown.js" type="text/javascript" charset="utf-8"></script>
-<script>
-			$(
-					function(){
-						$('#label').bind("click",test);
-
-					    $('#counter_2').countdown({
-					        image: 'image/digits.png',
-					        startTime: '00:10',
-					        timerEnd: function(){ alert('end!'); },
-					        format: 'mm:ss'
-					      });
-						}
-
-					
-			);
-			
-			function test(){
-				var item = $('#labelbox').attr("value");
-				var id = 1;
-				$.get('match.php',{label:item, picid:id},function(data){
-					if (data.matched == "false"){
-						alert("not matched");
-						}
-					else{
-						$('#gameimg').attr({
-							src : data.url
-						});
-						alert("matched");
-					}
-				},"json");
-			};
-		</script>
 </head>
 <body>
 <?php
@@ -57,25 +25,33 @@ $imgurl=$_GET['url'];
 					</div>
 					<div id="score">
 						<h1>Score</h1>
+						<h2 id="scorenum">0</h2>
 					</div>
 					<div id="passes">
 						<h1>Passes</h1>
+						<h2 id="passnum">0</h2>
 					</div>
 					<div id="offlimit">
 						<h1>Off-limits</h1>
+						<div id="limitstr">hello</div>
 					</div>
 					<div id="mylabels">
 						<h1>My-labels</h1>
+						<div id="labelstr"></div>
 					</div>
 				</div>
 				<div id="gamecenter">
 					<div id="input">
-						<input id="labelbox" type="text" /> <input id="label"
-							class="button" type="button" value="Label" /> <input id="pass"
-							class="button" type="button" value="Pass" /> <img id="gameimg"
-							src="<?php echo $imgurl;?>" />
+						<input id="labelbox" type="text" /> 
+						<input id="label" class="button" type="button" value="Label" /> 
+						<input id="pass" class="button" type="button" value="Pass" /> 
 					</div>
-					<div id="image"></div>
+					<div id="notify">
+						<p>here put the notis</p>
+					</div>
+					<div id="image">
+						<img id="gameimg" src="<?php echo $imgurl;?>" />
+					</div>
 				</div>
 			</div>
 		</div>

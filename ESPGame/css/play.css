@@ -39,6 +39,7 @@ body {
 #gameimg{
 	max-width: 500px;
 	max-height: 600px;
+	margin-top: 20px;
 	text-align: center;
 }
 
@@ -89,11 +90,17 @@ body {
 	-webkit-border-radius: 5px; 
 }
 
+#notify{
+	color:red;
+	font-size: 12px;;
+}
+
 #labelbox{
 	width: 300px;
 }
 #footer {
     height: 30px;
+    clear: both;
 }
 
 .dg {
