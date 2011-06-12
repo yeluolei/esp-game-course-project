@@ -52,3 +52,9 @@ content varchar(30) not null,
 times int not null default 0,
 foreign key(picid) references pic(picid)
 )engine=innodb charset=utf8;
+
+create table admin(
+userid varchar(15) not null,
+passwd varchar(20) not null,
+primary key (userid)
+) engine=innodb charset=utf8;

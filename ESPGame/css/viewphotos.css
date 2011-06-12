@@ -1,0 +1,45 @@
+* {
+	font-size: 12pt;
+	font-family: "Verdana", "Geneva", sans-serif;
+}
+
+body {
+	background-color: white;
+	padding: 1em;
+}
+
+div {
+	margin-top: 0.5em;
+}
+
+.info {
+	padding-left: 160px;
+}
+
+#main {
+	overflow: hidden;
+	width: 32em;
+}
+
+strong {
+	display: inline-block;
+	width: 11em;
+}
+
+.photo {
+	margin-bottom: 3em;
+}
+
+.name {
+	background-color: #E0E0FF;
+	clear: left;
+}
+
+.name img {
+	width: 150px;
+	float: left;
+	margin-right: 10px;
+	margin-bottom: 3em;
+}
+
+/* your additional styles go here */
