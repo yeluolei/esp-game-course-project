@@ -33,10 +33,15 @@ if ($s = mysql_fetch_object($r))
 
 			$updatep="UPDATE player SET pairid = '$id2' where userid='$_SESSION[USERNAME]';";
 			mysql_query($updatep);*/
-
+			//$getpic = "SELECT pic.picid as picid, url from player,game,pic,gamepair where player.id='$_SESSION[USERNAME]' and game.id=gamepair.currentgame and pic.picid = game.picid and gamepair.id= player.partid;";
+			$getpic = "select url, pic.picid as picid,game.id as gameid from gamepair, pic, game where gamepair.id = '$s->pairid' and gamepair.currentgame=game.id and game.picid=pic.picid";
+			$result2 = mysql_query($getpic);
+			$picid = mysql_fetch_object($result2);
 			$_SESSION["pairid"]=$s->pairid;
 			$_SESSION["partnerid"] = $s->partid;
-			echo json_encode(array('partername'=>$s->partid , 'status'=>'success'));
+			$_SESSION['picid'] = $picid->picid;
+			$_SESSION['gameid'] = $picid->gameid;
+			echo json_encode(array('partername'=>$s->partid , 'status'=>'success',"url"=>$picid->url));
 		//}
 	}
 }
@@ -66,7 +71,9 @@ if (!$succ){
 		$sql="select @@IDENTITY as id";
 		$newid=mysql_query($sql);
 		$id = mysql_fetch_object($newid);
-		$id2 = $id->id;
+		$id2 = $id->id;  //gamepair id
+		
+		//$insertquery = "insert into game(pairid,picid,status) values('$id2','$picarry[picid]',0)";
 		
 		$updatep="UPDATE player SET pairid = '$id2' where userid='$ob->userid';";
 		mysql_query($updatep);
@@ -76,7 +83,20 @@ if (!$succ){
 
 		$_SESSION["pairid"]=$id2;
 		$_SESSION["partnerid"]= $ob->userid;
-		echo json_encode(array('partername'=>$ob->userid , 'status'=>'success'));
+		
+		$picarry = get_pic_p();  //获取下一张图片
+		$insertquery = "insert into game(pairid,picid,status) values('$id2','$picarry[picid]',0)";
+		mysql_query($insertquery);
+		$_SESSION['picid'] = $picarry['picid'];
+		$sql="select @@IDENTITY as id"; //获取game的id
+		$gameidrwa = mysql_query($sql);
+		$gameidarray = mysql_fetch_array($gameidrwa);
+		$gameid = $gameidarray['id'];
+		$_SESSION['gameid'] = $gameid;
+		$updatepair="UPDATE gamepair SET currentgame = '$gameid' where id='$id2';";
+		mysql_query($updatepair);
+		
+		echo json_encode(array('partername'=>$ob->userid , 'status'=>'success',"url"=>$picarry['url']));
 	}
 }
 if (!$succ) {

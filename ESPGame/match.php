@@ -4,7 +4,7 @@
 	$succ = FALSE;
 	$labelid = $_GET['label'];
 	$userid = $_SESSION['USERNAME'];
-	$picid = $_GET['picid'];
+	$picid = $_SESSION['picid'];
 	
 	
 	$conn = mysql_connect($cfg_dbhost,$cfg_dbuser,$cfg_dbpwd);
@@ -44,8 +44,10 @@
 		$gameid = $gameidarray['id'];
 		$updatepair="UPDATE gamepair SET currentgame = '$gameid' where id='$_SESSION[pairid]';";
 		$db->query($updatepair);
-		$updates="UPDATE game SET status = '1' where userid='$_SESSION[partnerid]';";
+		$updates="UPDATE game SET status = '1' where id='$_SESSION[gameid]';";
+		$db->query($updates);
 		$updates="UPDATE player SET status = '5' where userid='$_SESSION[partnerid]';";
+		$_SESSION['picid'] = $picarry["picid"];
 		$db->query($updates);
 		echo json_encode(array('matched'=>'true',"url"=> $picarry["url"],"picid"=>$picarry["picid"],"gameid"=>$gameid));
 	}

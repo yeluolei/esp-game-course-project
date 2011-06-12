@@ -43,6 +43,7 @@
 <body>
 <?php
 session_start();
+$imgurl=$_GET['url'];
 ?>
 	<div id="content">
 	<?php include 'header.php';?>
@@ -72,7 +73,7 @@ session_start();
 						<input id="labelbox" type="text" /> <input id="label"
 							class="button" type="button" value="Label" /> <input id="pass"
 							class="button" type="button" value="Pass" /> <img id="gameimg"
-							src="image/test.jpg" />
+							src="<?php echo $imgurl;?>" />
 					</div>
 					<div id="image"></div>
 				</div>

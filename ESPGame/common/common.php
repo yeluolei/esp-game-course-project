@@ -41,4 +41,17 @@ ORDER BY picid LIMIT 1";
 	$result = array("url"=> $pic["url"],"picid"=>$pic["picid"]);
 	return $result;
 }
+
+function get_pic_p()
+{
+	$tableName='pic';
+	$queryString = "SELECT picid, url FROM ".$tableName."
+WHERE picid >= (SELECT floor(RAND() * (SELECT MAX(picid) FROM ".$tableName.")))  
+ORDER BY picid LIMIT 1";
+	
+	$result = mysql_query($queryString);
+	$pic = mysql_fetch_array($result);
+	$result = array("url"=> $pic["url"],"picid"=>$pic["picid"]);
+	return $result;
+}
 ?>

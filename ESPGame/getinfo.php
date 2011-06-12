@@ -32,6 +32,7 @@
 		
 		$updatestart="UPDATE player SET status = '2' where userid='$_SESSION[USERNAME]' || userid='$_SESSION[partnerid]';";
 		mysql_query($updatestart);
+		$_SESSION['picid'] = $picid->picid;
 		$ret["picid"]= $picid->picid;
 		$ret["url"] = $picid->url;
 		$ret['parterstatus']=3;

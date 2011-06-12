@@ -80,7 +80,7 @@
 						setTimeout("connect()", 1000);
 						}
 					else{
-						window.location.href="play.php";
+						window.location.href="play.php?url="+data.url;
 					}
 				},"json");
 		};

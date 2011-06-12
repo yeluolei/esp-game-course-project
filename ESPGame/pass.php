@@ -21,7 +21,7 @@ $db->query($updatepair);
 
 $updates="UPDATE player SET status = '5' where userid='$_SESSION[partnerid]';";
 $db->query($updates);
-
+$_SESSION['picid'] = $picarry["picid"];
 echo json_encode(array("url"=> $picarry["url"],"picid"=>$picarry["picid"],"gameid"=>$gameid));
 
 ?>
