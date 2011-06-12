@@ -46,6 +46,19 @@
 		$db->query($updatepair);
 		$updates="UPDATE game SET status = '1' where id='$_SESSION[gameid]';";
 		$db->query($updates);
+		$countsql = "select count(*) as c from label where picid='$_SESSION[picid]' and content = '$_GET[label]'";
+		$count_result = $db->query($countsql);
+		$temp = $count_result->fetch_assoc();
+		$num = $temp['c'];
+		if($num == 0){
+			$insertsql = "insert into label values('$_SESSION[picid]','$_GET[label]',1)";
+			$db->query($insertsql);
+		}
+		else {
+			$updatesql = "update label set times = times + 1 where picid='$_SESSION[picid]' and content = '$_GET[label]'";
+			$db->query($updatesql);
+		}
+		$num_result = $result->num_rows;
 		$updates="UPDATE player SET status = '5' where userid='$_SESSION[partnerid]';";
 		$_SESSION['picid'] = $picarry["picid"];
 		$db->query($updates);

@@ -21,7 +21,7 @@ function bindgaming(){
 	});
     $('#counter_2').html().countdown({
         image: 'image/digits.png',
-        startTime: '00:10',
+        startTime: '01:00',
         timerEnd: function(){ 
         	finish();
         },
@@ -58,6 +58,9 @@ function test(){
 			}
 		else{
 			alert("matched");
+			$('#gameimg').attr({
+				src : data.url
+			});
 			score();
 		}
 	},"json");
