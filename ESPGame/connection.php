@@ -35,6 +35,7 @@ if ($s = mysql_fetch_object($r))
 			mysql_query($updatep);*/
 
 			$_SESSION["pairid"]=$s->pairid;
+			$_SESSION["partnerid"] = $s->partid;
 			echo json_encode(array('partername'=>$s->partid , 'status'=>'success'));
 		//}
 	}
@@ -74,6 +75,7 @@ if (!$succ){
 		mysql_query($updatep);
 
 		$_SESSION["pairid"]=$id2;
+		$_SESSION["partnerid"]= $ob->userid;
 		echo json_encode(array('partername'=>$ob->userid , 'status'=>'success'));
 	}
 }

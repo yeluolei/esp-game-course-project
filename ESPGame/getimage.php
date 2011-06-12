@@ -4,7 +4,7 @@
  * 则会返回一张不重复的pic
  * 返回值：url  and   picid
  * Zhu Xinyu
- * 
+ *
  */
 include_once 'common/common.php';
 $db = new mysqli($cfg_dbhost,$cfg_dbuser,$cfg_dbpwd,$cfg_dbname);
@@ -42,9 +42,9 @@ if(!$result){
 }
 
 echo json_encode(array("url"=> $pic["url"],"picid"=>$pic["picid"]));
-	
-	function get_image()
-	{
-		return json_encode(array("url"=> "image/test2.jpg"));
-	}
+
+function get_image()
+{
+	return json_encode(array("url"=> "image/test2.jpg"));
+}
 ?>

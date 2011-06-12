@@ -29,6 +29,11 @@ function check() {
 			alert('parter leave');
 			location.herf = "login.php";
 		} else {
+			if(data.parterstatus == 3){
+				$('#gameimg').attr({
+					src : data.url
+				});
+			}
 			setTimeout("check()", 1000);
 		}
 	}, "json");

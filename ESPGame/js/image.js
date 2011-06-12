@@ -1,7 +1,7 @@
 $(
 function() {
 	$('#pass').click(function() {
-		$.get("getimage.php", function(data) {
+		$.get("pass.php", function(data) {
 			$('#gameimg').attr({
 				src : data.url
 			});

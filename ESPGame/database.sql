@@ -22,6 +22,7 @@ create table gamepair(
 id int not null AUTO_INCREMENT,
 player1 varchar(15) not null,
 player2 varchar(15) not null,
+currentgame int default null,
 primary key(id),
 foreign key(player1) references player(userid),
 foreign key(player2) references player(userid)

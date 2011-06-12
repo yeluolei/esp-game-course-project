@@ -6,6 +6,8 @@ $cfg_dbuser = 'root';
 $cfg_dbpwd = '1';
 $cfg_db_language = 'utf8';
 
+$stat_requestPass = '5';
+$stat_agreePass = '6';
 
 function get_parter()
 {
@@ -25,5 +27,18 @@ function get_self()
 		return $row;
 	}
 	return FALSE;
+}
+
+function get_pic(  mysqli $link )
+{
+	$tableName='pic';
+	$queryString = "SELECT picid, url FROM ".$tableName."
+WHERE picid >= (SELECT floor(RAND() * (SELECT MAX(picid) FROM ".$tableName.")))  
+ORDER BY picid LIMIT 1";
+	
+	$result = $link->query($queryString);
+	$pic = $result->fetch_array();
+	$result = array("url"=> $pic["url"],"picid"=>$pic["picid"]);
+	return $result;
 }
 ?>
