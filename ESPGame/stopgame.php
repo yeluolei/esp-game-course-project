@@ -10,12 +10,12 @@
 	
 	$parter = get_parter();
 	
-	$updateStopGame="update player set status='$_POST[operation]',partid=DEFAULT where userid='$_SESSION[USERNAME]';";
+	$updateStopGame="update player set status='$_POST[operation]',partid=DEFAULT,pairid=DEFAULT where userid='$_SESSION[USERNAME]';";
 	mysql_query($updateStopGame);
 	if ($parter){
 		$notifyParterStop = "update player set status='4' where userid='$parter->userid';";
 		mysql_query($notifyParterStop);
-	}				 
+	}
 	
 	
 	session_destroy();

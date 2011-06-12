@@ -17,7 +17,7 @@
 	 */
 	if ($self->status=='4')
 	{
-		$updateStopGame="update player set status='1',partid=DEFAULT where userid='$_SESSION[USERNAME]';";
+		$updateStopGame="update player set status='1',partid=DEFAULT,pairid=DEFAULT where userid='$_SESSION[USERNAME]';";
 		mysql_query($updateStopGame);
 		$ret['parterstatus']=0;
 	}
