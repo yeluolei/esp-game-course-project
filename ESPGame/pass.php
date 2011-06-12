@@ -14,6 +14,8 @@ $result = $db->query($sql);
 $gameidarray = $result->fetch_array();
 $gameid = $gameidarray['id'];
 
+$_SESSION['gameid'] = $gameid;
+
 $updatepair="UPDATE gamepair SET currentgame = '$gameid' where id='$_SESSION[pairid]';";
 $db->query($updatepair);
 

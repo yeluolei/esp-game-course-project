@@ -44,6 +44,7 @@
 		$gameid = $gameidarray['id'];
 		$updatepair="UPDATE gamepair SET currentgame = '$gameid' where id='$_SESSION[pairid]';";
 		$db->query($updatepair);
+		$updates="UPDATE game SET status = '1' where userid='$_SESSION[partnerid]';";
 		$updates="UPDATE player SET status = '5' where userid='$_SESSION[partnerid]';";
 		$db->query($updates);
 		echo json_encode(array('matched'=>'true',"url"=> $picarry["url"],"picid"=>$picarry["picid"],"gameid"=>$gameid));
