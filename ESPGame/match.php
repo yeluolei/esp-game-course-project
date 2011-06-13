@@ -44,17 +44,25 @@
 	if ($succ) {
 		$pairid=$_SESSION['pairid'];
 		$db = new mysqli($cfg_dbhost,$cfg_dbuser,$cfg_dbpwd,$cfg_dbname);
+		//获取新图片
 		$picarry = get_pic($db);
+		//创建新的game
 		$insertquery = "insert into game(pairid,picid,status) values('$pairid','$picarry[picid]',0)";
 		$db->query($insertquery);
+		
 		$sql="select @@IDENTITY as id";
 		$result = $db->query($sql);
 		$gameidarray = $result->fetch_array();
-		$gameid = $gameidarray['id'];
-		$updatepair="UPDATE gamepair SET currentgame = '$gameid' where id='$_SESSION[pairid]';";
+		$newgameid = $gameidarray['id'];
+		$_SESSION['gameid'] = $newgameid;  //更新game id
+		//更新current game
+		$updatepair="UPDATE gamepair SET currentgame = '$newgameid' where id='$_SESSION[pairid]';";
 		$db->query($updatepair);
-		$updates="UPDATE game SET status = '1' where id='$_SESSION[gameid]';";
+		//update old game status;
+		$updates="UPDATE game SET status = '1' where id='$gameid';";
 		$db->query($updates);
+		
+		//updata the label info
 		$countsql = "select count(*) as c from label where picid='$_SESSION[picid]' and content = '$_GET[label]'";
 		$count_result = $db->query($countsql);
 		$temp = $count_result->fetch_assoc();
@@ -68,6 +76,7 @@
 			$db->query($updatesql);
 		}
 		$num_result = $result->num_rows;
+		// 通知对方
 		$updates="UPDATE player SET status = '6' where userid='$_SESSION[partnerid]';";
 		$_SESSION['picid'] = $picarry["picid"];
 		$db->query($updates);

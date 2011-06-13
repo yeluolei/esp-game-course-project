@@ -26,7 +26,7 @@ function bindgaming(){
     $('#counter_2').html();
     $('#counter_2').countdown({
         image: 'image/digits.png',
-        startTime: '00:10',
+        startTime: '01:20',
         timerEnd: function(){ 
         	finish();
         },

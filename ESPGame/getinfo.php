@@ -34,6 +34,7 @@
 		$updatestart="UPDATE player SET status = '2' where userid='$_SESSION[USERNAME]' || userid='$_SESSION[partnerid]';";
 		mysql_query($updatestart);
 		$_SESSION['picid'] = $picid->picid;
+		$_SESSION['gameid'] = $pair->currentgame;
 		$limits = getOfflimits($picid->picid);
 		$ret["picid"]= $picid->picid;
 		$ret["url"] = $picid->url;
@@ -53,6 +54,7 @@
 		mysql_query($updatestart);
 		$limits = getOfflimits($picid->picid);
 		$_SESSION['picid'] = $picid->picid;
+		$_SESSION['gameid'] = $pair->currentgame;
 		$ret["picid"]= $picid->picid;
 		$ret["url"] = $picid->url;
 		$ret['parterstatus']=6;
