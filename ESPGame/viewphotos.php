@@ -43,8 +43,8 @@ function getUrl($pid){
 		<script type="text/javascript" src="js/jquery.js"></script>
 	</head>
 	<body>
-		<div id="#content">
-	<?php include 'header.php';?>
+		<div id="content">
+		<?php include 'header.php';?>
 		<div id="main">
 			<div id="photos">
 				<h1>LabeledPhotos</h1>
