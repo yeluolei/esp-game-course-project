@@ -1,5 +1,6 @@
 		$(function(){
 				init();
+				$('tr td:first-child').css("border-left","1px solid #5C9446");
 			});
 		
 		function init()

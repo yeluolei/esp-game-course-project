@@ -29,8 +29,10 @@
 				</center>
 				<div id ="toppair">
 					<table>
-						<tr>
-							<td>player</td>
+						<tbody>
+						<tr style="background-color:#5C9446;">
+							<td>player 1</td>
+							<td>player 2</td>
 							<td>score</td>
 						</tr>
 						<?php
@@ -43,6 +45,7 @@
 								<td><?= $line['sum'] ?></td>
 							</tr>
 						<?php } ?>
+						</tbody>
 					</table>
 				</div>
 			</div>

@@ -56,8 +56,7 @@ function finish(){
 					data+
 				'</center>'+
 				'<input id="restart" class="button" type="button" value="restart" /> '+
-				'<div>'+
-				'<p>waiting for connectting ..</p>'+
+				'<div id="restartnotify" style="color:red ; font-size: 12px;">'+
 				'</div>'
 		);
 		$('#restart').click(function(){
@@ -65,6 +64,7 @@ function finish(){
 			$('#limitstr').html('');
 			$('#passnum').html(0);
 			$('#scorenum').html(0);
+			$('#restartnotify').html('<p>waiting for connectting ..</p>');
 			connect();
 		});
 	});
