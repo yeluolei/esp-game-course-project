@@ -1,8 +1,3 @@
-* {
-	font-size: 12pt;
-	font-family: "Verdana", "Geneva", sans-serif;
-}
-
 body {
 	background-color: white;
 	padding: 1em;
@@ -15,28 +10,24 @@ div {
 .info {
 	padding-left: 160px;
 }
-
-#main {
-	overflow: hidden;
-	width: 32em;
-}
-
 strong {
 	display: inline-block;
 	width: 11em;
+	text-align: center;
 }
 
 .photo {
 	margin-bottom: 3em;
+	border-bottom: 1px solid #5c9446;
 }
 
 .name {
-	background-color: #E0E0FF;
 	clear: left;
 }
 
 .name img {
 	width: 150px;
+	max-height: 150px;
 	float: left;
 	margin-right: 10px;
 	margin-bottom: 3em;

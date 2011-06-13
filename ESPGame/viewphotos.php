@@ -39,9 +39,11 @@ function getUrl($pid){
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 		<link href="css/viewphotos.css" type="text/css" rel="stylesheet" />
 		<link href="css/index.css" type="text/css" rel="stylesheet" />
+		<link href="css/play.css" type="text/css" rel="stylesheet" />
 		<script type="text/javascript" src="js/jquery.js"></script>
 	</head>
 	<body>
+		<div id="#content">
 	<?php include 'header.php';?>
 		<div id="main">
 			<div id="photos">
@@ -65,6 +67,7 @@ function getUrl($pid){
 					</div>
 				<?php } ?>
 			</div>
+		</div>
 		</div>
 	</body>
 </html>
