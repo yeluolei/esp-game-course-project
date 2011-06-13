@@ -23,10 +23,10 @@ function bindgaming(){
 		test();
 		
 	});
-    $('#counter_2').html();
+    $('#counter_2').html("");
     $('#counter_2').countdown({
         image: 'image/digits.png',
-        startTime: '01:20',
+        startTime: '00:30',
         timerEnd: function(){ 
         	finish();
         },
@@ -117,7 +117,7 @@ function connect() {
 					'<p>here put the notis</p>'+
 					'</div>'+
 					'<div id="image">'+
-					'<img id="gameimg" src="image/test.jpg" />'+
+					'<img id="gameimg" src="'+data.url+'" />'+
 					'</div>');
 			bindgaming();
 			check();

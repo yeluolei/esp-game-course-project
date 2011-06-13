@@ -15,6 +15,8 @@
 	 * 4----对方窗口关闭
 	 * 2----正在游戏
 	 * 1----等待链接
+	 * 5----pass
+	 * 6----match
 	 */
 	if ($self->status=='4')
 	{
@@ -62,6 +64,8 @@
 	}
 	else {
 		$ret['parterstatus']=1;
+		$ret['picid']=$_SESSION['picid'];
+		$ret['gameid']=$_SESSION['gameid'];
 	}
 	
 	echo json_encode($ret);

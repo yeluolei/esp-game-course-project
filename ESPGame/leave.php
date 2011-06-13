@@ -16,7 +16,7 @@
 	}
 	}
 	
-	$query = "update player set status='1',partid=DEFAULT,pairid=DEFAULT where userid='$_SESSION[USERNAME]';";
+	$query = "update player set status='7',partid=DEFAULT,pairid=DEFAULT where userid='$_SESSION[USERNAME]';";
 	mysql_query($query);
 	
 	$lookupquery = "select * from labelforgame where pairid='$_SESSION[pairid]'";

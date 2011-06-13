@@ -11,6 +11,7 @@
 	    $password = $_POST['passwd'];
 	    if($username == "" || $password == ""){
 	     	echo json_encode(array('succ'=>false,'msg'=>"User name and passwowd can't be empty!"));
+	    	exit();
 	    }
 	    else{
 	    	$query = "select * from admin";
@@ -23,9 +24,11 @@
 		      			$succful = TRUE;
 		       			$_SESSION['USERNAME'] = $username;
 		       			echo json_encode(array('succ'=>true , 'userid'=>$username));
+		       			exit();
 		      		}
 		      		else{
 		      			echo json_encode(array('succ'=>false, 'msg'=>"Password Error"));
+		      			exit();
 		      		}
 		    	}
 		    }

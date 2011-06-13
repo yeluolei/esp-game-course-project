@@ -85,10 +85,10 @@
 		$updates="UPDATE player SET status = '6' where userid='$_SESSION[partnerid]';";
 		$_SESSION['picid'] = $picarry["picid"];
 		$db->query($updates);
-
+		$limits = getOfflimits_o($db, $picarry["picid"]);
 		echo json_encode(array('matched'=>'true','limits'=>$limits,"url"=> $picarry["url"],"picid"=>$picarry["picid"],"gameid"=>$gameid));
 	}
 	else{
-		echo json_encode(array('matched'=>'false'));
+		echo json_encode(array('matched'=>'false',"picid"=>$picid,"gameid"=>$gameid,"sql"=>$addlabel));
 	}
 ?>

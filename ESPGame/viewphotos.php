@@ -38,9 +38,11 @@ function getUrl($pid){
 		<title>index</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 		<link href="css/viewphotos.css" type="text/css" rel="stylesheet" />
+		<link href="css/index.css" type="text/css" rel="stylesheet" />
 		<script type="text/javascript" src="js/jquery.js"></script>
 	</head>
 	<body>
+	<?php include 'header.php';?>
 		<div id="main">
 			<div id="photos">
 				<h1>LabeledPhotos</h1>

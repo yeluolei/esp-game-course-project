@@ -34,4 +34,15 @@ function getOfflimits($pid){
 	//print_r($list);
 	return $list;
 };
+
+function getOfflimits_o(mysqli $db, $pid){
+	$getlimits = "SELECT content from label where picid = '$pid' and times > 1;";
+	$result = $db->query($getlimits);
+	$list = array();
+	while ($row = $result->fetch_object()){
+		$list[] = $row->content;
+	}
+	//print_r($list);
+	return $list;
+};
 ?>

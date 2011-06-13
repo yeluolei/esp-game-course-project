@@ -14,6 +14,12 @@ $checkself = "SELECT status,pairid,partid from player where userid='$_SESSION[US
 $r = mysql_query($checkself);
 if ($s = mysql_fetch_object($r))
 {
+	if($s->status == 7){
+		$queryupdate="UPDATE player SET status = '1' where userid='$_SESSION[USERNAME]';";
+		mysql_query($queryupdate);
+		echo json_encode(array('status'=>'fail',"7777"=>"sfssdfsa"));
+		exit();
+	}
 	if ($s->status == 2)
 	{
 		$succ = TRUE;

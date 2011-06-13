@@ -70,6 +70,8 @@
 			$('#startgame').click(
 					function(){
 						 connect();
+						 $('#startgame').prop("disabled",true);
+						 $('#startgame').prop("value","Waiting...");
 					}
 			);
 		}
