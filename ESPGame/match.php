@@ -4,6 +4,11 @@
 	session_start();
 	$succ = FALSE;
 	$labelid = $_GET['label'];
+	if(@get_magic_quotes_gpc()==0){
+		$labelid=addslashes($labelid);
+	}
+	$labelid = str_replace("_","\_",$labelid);//转义掉”_”
+	$labelid = str_replace("%","\%",$labelid);//转义掉”%”
 	$userid = $_SESSION['USERNAME'];
 	$picid = $_SESSION['picid'];
 	$pairid = $_SESSION['pairid'];
@@ -44,9 +49,9 @@
 	if ($succ) {
 		$pairid=$_SESSION['pairid'];
 		$db = new mysqli($cfg_dbhost,$cfg_dbuser,$cfg_dbpwd,$cfg_dbname);
-		//获取新图片
+		//鑾峰彇鏂板浘鐗�
 		$picarry = get_pic($db);
-		//创建新的game
+		//鍒涘缓鏂扮殑game
 		$insertquery = "insert into game(pairid,picid,status) values('$pairid','$picarry[picid]',0)";
 		$db->query($insertquery);
 		
@@ -54,29 +59,29 @@
 		$result = $db->query($sql);
 		$gameidarray = $result->fetch_array();
 		$newgameid = $gameidarray['id'];
-		$_SESSION['gameid'] = $newgameid;  //更新game id
-		//更新current game
-		$updatepair="UPDATE gamepair SET currentgame = '$newgameid' where id='$_SESSION[pairid]';";
+		$_SESSION['gameid'] = $newgameid;  //鏇存柊game id
+		//鏇存柊current game
+		$updatepair="UPDATE gamepair SET currentgame = '$newgameid' where id='$pairid';";
 		$db->query($updatepair);
 		//update old game status;
 		$updates="UPDATE game SET status = '1' where id='$gameid';";
 		$db->query($updates);
 		
 		//updata the label info
-		$countsql = "select count(*) as c from label where picid='$_SESSION[picid]' and content = '$_GET[label]'";
+		$countsql = "select count(*) as c from label where picid='$picid' and content = '$labelid'";
 		$count_result = $db->query($countsql);
 		$temp = $count_result->fetch_assoc();
 		$num = $temp['c'];
 		if($num == 0){
-			$insertsql = "insert into label values('$_SESSION[picid]','$_GET[label]',1)";
+			$insertsql = "insert into label values('$picid','$labelid',1)";
 			$db->query($insertsql);
 		}
 		else {
-			$updatesql = "update label set times = times + 1 where picid='$_SESSION[picid]' and content = '$_GET[label]'";
+			$updatesql = "update label set times = times + 1 where picid='$picid' and content = '$_GET[label]'";
 			$db->query($updatesql);
 		}
 		$num_result = $result->num_rows;
-		// 通知对方
+		// 閫氱煡瀵规柟
 		$updates="UPDATE player SET status = '6' where userid='$_SESSION[partnerid]';";
 		$_SESSION['picid'] = $picarry["picid"];
 		$db->query($updates);

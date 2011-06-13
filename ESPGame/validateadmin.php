@@ -1,4 +1,5 @@
 <?php
+		@set_magic_quotes_runtime(0);
 		include_once 'common/common.php';
 		$conn = mysql_connect($cfg_dbhost,$cfg_dbuser,$cfg_dbpwd); 
 		if (!$conn)
