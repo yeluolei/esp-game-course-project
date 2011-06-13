@@ -16,7 +16,7 @@ $imgurl=$_GET['url'];
 	<div id="content">
 	<?php include 'header.php';?>
 		<div id="main">
-		<a id="a_logout" href="#" style="float:right;">logou</a>
+		<a id="a_logout" href="#" style="float:right;">logout</a>
 			<div id="game">
 				<div id="gameleft">
 					<div id="time">
@@ -34,7 +34,6 @@ $imgurl=$_GET['url'];
 					</div>
 					<div id="offlimit">
 						<h1>Off-limits</h1>
-						<div id="limitstr">hello</div>
 					</div>
 					<div id="mylabels">
 						<h1>My-labels</h1>
@@ -48,7 +47,6 @@ $imgurl=$_GET['url'];
 						<input id="pass" class="button" type="button" value="Pass" /> 
 					</div>
 					<div id="notify">
-						<p>here put the notis</p>
 					</div>
 					<div id="image">
 						<img id="gameimg" src="<?php echo $imgurl;?>" />
