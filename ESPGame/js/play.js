@@ -32,6 +32,15 @@ function bindgaming(){
         },
         format: 'mm:ss'
       });
+    $('#a_logout').click(
+    		function(){
+    			$.post('stopgame.php', {operation : '0'},
+    				function(data){
+    				if(data == "1"){
+    					window.location.href="index.php";
+    				}
+    			});}
+    );
 }
 
 function finish(){

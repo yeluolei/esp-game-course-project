@@ -16,6 +16,7 @@ $imgurl=$_GET['url'];
 	<div id="content">
 	<?php include 'header.php';?>
 		<div id="main">
+		<a id="a_logout" href="#" style="float:right;">logou</a>
 			<div id="game">
 				<div id="gameleft">
 					<div id="time">

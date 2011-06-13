@@ -10,13 +10,21 @@
 	
 	$parter = get_parter();
 	
+	$selectquery="select status from player where userid ='$_SESSION[USERNAME]'";
+	$result = mysql_query($selectquery);
+	$status = mysql_fetch_object($result);
+	
 	$updateStopGame="update player set status='$_POST[operation]',partid=DEFAULT,pairid=DEFAULT where userid='$_SESSION[USERNAME]';";
 	mysql_query($updateStopGame);
-	if ($parter){
-		$notifyParterStop = "update player set status='4' where userid='$parter->userid';";
-		mysql_query($notifyParterStop);
+	
+	if($status->status <> "4"){
+		if ($parter){
+			$notifyParterStop = "update player set status='4' where userid='$parter->userid';";
+			mysql_query($notifyParterStop);
+		}
 	}
 	
+	echo "1";
 	
 	session_destroy();
 ?>
